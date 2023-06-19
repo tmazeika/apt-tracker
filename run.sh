@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 mkdir -p out
 FILENAME="out/`date '+%Y-%m-%d %H:%M:%S'`.json"
 python3 -u main.py | tee "$FILENAME"
