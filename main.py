@@ -3,7 +3,7 @@
 import undetected_chromedriver as uc
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from util import printCsvLine
+from util import printUnitInfo
 from alexan_riverside import crawl as crawlAlexanRiverside
 from sondery import crawl as crawlSondery
 from windsor_eleven import crawl as crawlEleven
@@ -13,7 +13,6 @@ from windsor_soco import crawl as crawlSoco
 from windsor_south_lamar import crawl as crawlWindsorSouthLamar
 
 if __name__ == '__main__':
-    printCsvLine("URL", "Community", "Model", "Bedrooms", "Bathrooms", "Unit", "Area (sqft)", "Rent ($)", "Fees ($)", "Total Rent ($)", "$/sqft")
     driver = uc.Chrome(headless=True, use_subprocess=False)
     crawlAlexanRiverside(driver)
     crawlSondery(driver)

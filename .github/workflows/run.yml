@@ -1,8 +1,8 @@
-name: Run
+name: Run and insert into database
 on:
   workflow_dispatch:
   schedule:
-    - cron: '21 12 * * *'
+    - cron: '0 12 * * *'
 
 permissions:
   contents: read
@@ -22,11 +22,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Install Chrome
       uses: browser-actions/setup-chrome@v1
-    - name: Run main.py
+    - name: Run and insert into database
+      env:
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       run: |
-        python -u main.py | tee output.csv
-    - name: Upload output
-      uses: actions/upload-artifact@v3.1.2
-      with:
-        name: run-output
-        path: output.csv
+        ./run.sh
