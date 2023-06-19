@@ -1,7 +1,7 @@
 name: Run
 on:
-  push:
-    branches: [main]
+  schedule:
+    - cron: '21 12 * * *'
 
 permissions:
   contents: read
