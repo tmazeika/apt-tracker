@@ -13,7 +13,14 @@ from windsor_soco import crawl as crawlSoco
 from windsor_south_lamar import crawl as crawlWindsorSouthLamar
 
 if __name__ == '__main__':
-    driver = uc.Chrome(headless=True, use_subprocess=False)
+    options = uc.ChromeOptions()
+    options.add_argument('--disable-gpu')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-setuid-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument("--start-maximized")
+    options.add_argument("--window-size=1920,1080")
+    driver = uc.Chrome(headless=True, use_subprocess=False, options=options)
     crawlAlexanRiverside(driver)
     crawlSondery(driver)
     crawlEleven(driver)
