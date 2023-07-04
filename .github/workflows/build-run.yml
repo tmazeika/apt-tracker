@@ -1,4 +1,4 @@
-name: Run and insert into database
+name: Build and run
 on:
   workflow_dispatch:
   schedule:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-run:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -20,8 +20,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Run and insert into database
+    - name: Run
+      uses: nick-fields/retry@v2.8.3
       env:
         SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-      run: |
-        ./run.sh
+      with:
+        retry_on: error
+        max_attempts: 3
+        command: ./run.sh
