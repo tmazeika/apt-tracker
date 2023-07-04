@@ -31,12 +31,12 @@ class SonderyCrawler(Crawler):
         sleep(1)  # Waits for animation to finish.
         model = self.driver.find_element(
             By.CSS_SELECTOR, 'h1.skylease-unit__title').text
-        descriptionText = self.driver.find_elements(
+        description_text = self.driver.find_elements(
             By.CSS_SELECTOR, 'p.skylease-unit__info-content')
-        bedrooms = int(descriptionText[0].text.replace(
+        bedrooms = int(description_text[0].text.replace(
             'Studio', '0').split(' ')[0])
-        bathrooms = int(descriptionText[1].text.split(' ')[0])
-        area = int(descriptionText[-1].text.split(' ')[0])
+        bathrooms = int(description_text[1].text.split(' ')[0])
+        area = int(description_text[-1].text.split(' ')[0])
 
         for e in self.driver.find_elements(By.XPATH, '//table[@class="skylease-unit-table__table"]//tr')[1:]:
             if not e.find_elements(By.XPATH, './td[2]'):
