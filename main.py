@@ -20,6 +20,7 @@ if __name__ == '__main__':
     options.add_argument("--start-maximized")
     options.add_argument("--window-size=1920,1080")
     driver = uc.Chrome(headless=True, use_subprocess=False, options=options)
+    driver.set_page_load_timeout(30)
     crawlers: list[Crawler] = [
         AlexanRiversideCrawler(driver),
         WindsorElevenCrawler(driver),
