@@ -26,7 +26,6 @@ class SkyHouseCrawler(Crawler):
         self.driver.get(url)
         description_text = self.driver.find_element(
             By.CSS_SELECTOR, '.row-fluid > .block > .row-fluid > div > h3').text
-        print(description_text)
         description_match = re.search(
             r'FLOOR PLAN : (\w+) - (\d+) BEDROOMS?, (\d+) BATHROOMS?', description_text)
         model = description_match.group(1)
