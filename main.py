@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 
 import undetected_chromedriver as uc
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from util import printUnitInfo
-from alexan_riverside import crawl as crawlAlexanRiverside
-from sondery import crawl as crawlSondery
-from windsor_eleven import crawl as crawlEleven
-from windsor_monarch import crawl as crawlMonarch
-from windsor_on_the_lake import crawl as crawlWindsorOnTheLake
-from windsor_soco import crawl as crawlSoco
-from windsor_south_lamar import crawl as crawlWindsorSouthLamar
+from crawlers.alexan.alexan_riverside import AlexanRiversideCrawler
+from crawlers.crawler import Crawler
+from crawlers.sondery import SonderyCrawler
+from crawlers.windsor.windsor_eleven import WindsorElevenCrawler
+from crawlers.windsor.windsor_monarch import WindsorMonarchCrawler
+from crawlers.windsor.windsor_on_the_lake import WindsorOnTheLakeCrawler
+from crawlers.windsor.windsor_soco import WindsorSocoCrawler
+from crawlers.windsor.windsor_south_lamar import WindsorSouthLamarCrawler
 
 if __name__ == '__main__':
     options = uc.ChromeOptions()
@@ -21,10 +19,15 @@ if __name__ == '__main__':
     options.add_argument("--start-maximized")
     options.add_argument("--window-size=1920,1080")
     driver = uc.Chrome(headless=True, use_subprocess=False, options=options)
-    crawlAlexanRiverside(driver)
-    crawlSondery(driver)
-    crawlEleven(driver)
-    crawlMonarch(driver)
-    crawlWindsorOnTheLake(driver)
-    crawlSoco(driver)
-    crawlWindsorSouthLamar(driver)
+    crawlers: list[Crawler] = [
+        AlexanRiversideCrawler(driver),
+        WindsorElevenCrawler(driver),
+        WindsorMonarchCrawler(driver),
+        WindsorOnTheLakeCrawler(driver),
+        WindsorSocoCrawler(driver),
+        WindsorSouthLamarCrawler(driver),
+        SonderyCrawler(driver)
+    ]
+    for crawler in crawlers:
+        for unit in crawler.crawl():
+            print(unit.json_dumps())

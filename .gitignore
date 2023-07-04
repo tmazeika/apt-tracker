@@ -1,4 +1,5 @@
-/__pycache__
 /env
 /out
 /.env
+
+__pycache__
