@@ -25,6 +25,7 @@ jobs:
       env:
         SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       with:
+        timeout_minutes: 30
         retry_on: error
         max_attempts: 3
         command: ./run.sh
