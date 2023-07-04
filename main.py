@@ -13,7 +13,8 @@ from crawlers.windsor.windsor_south_lamar import WindsorSouthLamarCrawler
 
 if __name__ == '__main__':
     driver = uc.Chrome(headless=True, use_subprocess=False)
-    driver.set_page_load_timeout(30)
+    driver.set_page_load_timeout(10)
+    driver.implicitly_wait(10)
     crawlers: list[Crawler] = [
         AlexanRiversideCrawler(driver),
         WindsorElevenCrawler(driver),
