@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   build-run:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.11
@@ -29,8 +29,3 @@ jobs:
         retry_on: error
         max_attempts: 3
         command: ./run.sh
-    - name: Upload error screenshot
-      if: ${{ failure() }}
-      uses: actions/upload-artifact@v3.1.2
-      with:
-        path: error.png
