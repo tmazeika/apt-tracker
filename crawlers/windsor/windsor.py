@@ -1,5 +1,3 @@
-from random import random
-from time import sleep
 from crawlers.crawler import Crawler
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
@@ -22,7 +20,6 @@ class WindsorCrawler(Crawler):
             yield from self.__crawl_floorplan(url)
 
     def __crawl_floorplan(self, url: str):
-        sleep(1 + random() * 5) # Try to avoid getting blocked in AWS.
         self.driver.get(url)
         model = self.driver.find_element(
             By.XPATH, '//div[@class="floorplan-section"]/div[1]/div[1]/h2[1]').text
