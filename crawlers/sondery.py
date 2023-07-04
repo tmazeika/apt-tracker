@@ -39,8 +39,8 @@ class SonderyCrawler(Crawler):
         area = int(descriptionText[-1].text.split(' ')[0])
 
         for e in self.driver.find_elements(By.XPATH, '//table[@class="skylease-unit-table__table"]//tr')[1:]:
-            if not e.find_elements(By.XPATH, './td[1]'):
+            if not e.find_elements(By.XPATH, './td[2]'):
                 continue
-            unit = e.find_element(By.XPATH, './td[1]').text[1:]
+            unit = e.find_element(By.XPATH, './td[2]').text[2:]
             rent = extract_int(e.find_element(By.XPATH, './td[4]').text)
             yield Unit(url, self.COMMUNITY, model, bedrooms, bathrooms, unit, area, rent, self.FEES)
