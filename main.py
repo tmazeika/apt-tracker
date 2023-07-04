@@ -3,6 +3,7 @@
 import undetected_chromedriver as uc
 from crawlers.alexan.alexan_riverside import AlexanRiversideCrawler
 from crawlers.crawler import Crawler
+from crawlers.skyhouse import SkyHouseCrawler
 from crawlers.sondery import SonderyCrawler
 from crawlers.windsor.windsor_eleven import WindsorElevenCrawler
 from crawlers.windsor.windsor_monarch import WindsorMonarchCrawler
@@ -26,7 +27,8 @@ if __name__ == '__main__':
         WindsorOnTheLakeCrawler(driver),
         WindsorSocoCrawler(driver),
         WindsorSouthLamarCrawler(driver),
-        SonderyCrawler(driver)
+        SkyHouseCrawler(driver),
+        SonderyCrawler(driver),
     ]
     for crawler in crawlers:
         for unit in crawler.crawl():
