@@ -27,5 +27,5 @@ jobs:
       with:
         timeout_minutes: 30
         retry_on: error
-        max_attempts: 3
+        max_attempts: 5
         command: ./run.sh
