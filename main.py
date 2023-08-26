@@ -8,6 +8,7 @@ from crawlers.corazon import CorazonCrawler
 from crawlers.crawler import Crawler
 from crawlers.skyhouse import SkyHouseCrawler
 from crawlers.sondery import SonderyCrawler
+from crawlers.windsor.windsor_eleven import WindsorElevenCrawler
 from crawlers.windsor.windsor_on_the_lake import WindsorOnTheLakeCrawler
 from crawlers.windsor.windsor_soco import WindsorSocoCrawler
 from crawlers.windsor.windsor_south_lamar import WindsorSouthLamarCrawler
@@ -24,6 +25,7 @@ if __name__ == '__main__':
     crawlers: list[Crawler] = [
         AlexanRiversideCrawler(driver),
         AlexanWaterlooCrawler(driver),
+        WindsorElevenCrawler(driver),
         WindsorOnTheLakeCrawler(driver),
         WindsorSocoCrawler(driver),
         WindsorSouthLamarCrawler(driver),

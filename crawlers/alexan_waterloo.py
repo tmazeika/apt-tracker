@@ -30,7 +30,7 @@ class AlexanWaterlooCrawler(Crawler):
         description_match = re.search(
             r'(\d+) Bed / ([\d\.]+) Bath', description_text.replace('Studio', '0'))
         bedrooms = int(description_match.group(1))
-        bathrooms = int(float(description_match.group(2)))
+        bathrooms = extract_int(description_match.group(2))
         area_text = self.driver.find_element(
             By.CSS_SELECTOR, '.details > ul:nth-child(1) > li:nth-child(3)').text
         area = extract_int(area_text)
