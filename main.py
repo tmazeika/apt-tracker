@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 import undetected_chromedriver as uc
-from crawlers.alexan.alexan_riverside import AlexanRiversideCrawler
+from crawlers.alexan_riverside import AlexanRiversideCrawler
+from crawlers.alexan_waterloo import AlexanWaterlooCrawler
 from crawlers.camden_rainey import CamdenRaineyCrawler
 from crawlers.corazon import CorazonCrawler
 from crawlers.crawler import Crawler
 from crawlers.skyhouse import SkyHouseCrawler
 from crawlers.sondery import SonderyCrawler
 from crawlers.windsor.windsor_eleven import WindsorElevenCrawler
-from crawlers.windsor.windsor_monarch import WindsorMonarchCrawler
 from crawlers.windsor.windsor_on_the_lake import WindsorOnTheLakeCrawler
 from crawlers.windsor.windsor_soco import WindsorSocoCrawler
 from crawlers.windsor.windsor_south_lamar import WindsorSouthLamarCrawler
@@ -24,8 +24,8 @@ if __name__ == '__main__':
     driver = uc.Chrome(headless=True, use_subprocess=False, options=options)
     crawlers: list[Crawler] = [
         AlexanRiversideCrawler(driver),
+        AlexanWaterlooCrawler(driver),
         WindsorElevenCrawler(driver),
-        WindsorMonarchCrawler(driver),
         WindsorOnTheLakeCrawler(driver),
         WindsorSocoCrawler(driver),
         WindsorSouthLamarCrawler(driver),

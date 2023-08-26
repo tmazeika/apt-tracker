@@ -25,6 +25,8 @@ class WindsorCrawler(Crawler):
             By.XPATH, '//div[@class="floorplan-section"]/div[1]/div[1]/h2[1]').text
         bedrooms_text = self.driver.find_element(
             By.XPATH, '//div[@class="floorplan-section"]/div[1]/div[1]/div[1]/span[1]').text
+        print(bedrooms_text)
+        print(url)
         bedrooms = extract_int(bedrooms_text.replace('Studio', '0'))
         bathrooms_text = self.driver.find_element(
             By.XPATH, '//div[@class="floorplan-section"]/div[1]/div[1]/div[1]/span[2]').text
