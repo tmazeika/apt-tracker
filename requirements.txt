@@ -14,6 +14,6 @@ sortedcontainers==2.4.0
 trio==0.22.2
 trio-websocket==0.10.3
 undetected-chromedriver==3.5.3
-urllib3==2.0.4
+urllib3==2.0.7
 websockets==11.0.3
 wsproto==1.2.0
